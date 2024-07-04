@@ -4,16 +4,17 @@ phases:
   install:
     runtime-versions:
       nodejs: 12
-  pre_build:
+      java: corretto11
     commands:
       - echo "Installing Maven and Java"
-      - apt-get update
-      - apt-get install -y maven openjdk-11-jdk
+      - yum install -y maven java-11-amazon-corretto-devel
+
   build:
     commands:
       - echo Build started on `date`
       - mvn clean install -f pom.xml
       - echo Build completed on `date`
+
 artifacts:
   files:
     - '**/*'
