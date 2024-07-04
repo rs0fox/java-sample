@@ -20,12 +20,7 @@ phases:
       - cd scripts  # Change directory to scripts folder
       - chmod +x *.sh
       - ./start_server.sh  # Execute start_server.sh script
-
-  final:
-    commands:
-      - cd scripts  # Change directory to scripts folder
-      - chmod +x *.sh
-      - ./stop_server.sh  # Execute stop_server.sh script
+      - ./stop_server.sh   # Execute stop_server.sh script after deployment
 
 artifacts:
   files:
