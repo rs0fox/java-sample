@@ -2,7 +2,7 @@ version: 0.2
 
 phases:
   install:
-   
+    
     commands:
       - mvn clean install -f pom.xml
       - ls -al  # List all files and directories to verify structure
@@ -11,7 +11,8 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else echo "scripts directory not found"; exit 1; fi  # Change directory to 'scripts'; exit if not found
+      - ls -al scripts  # List contents of 'scripts' directory to verify it exists
+      - cd scripts  # Change directory to 'scripts'
       - ls -al  # List files and directories inside 'scripts' directory
       - chmod +x *.sh  # Ensure scripts are executable
       - ./setup.sh  # Execute setup.sh script
@@ -25,7 +26,7 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else echo "scripts directory not found"; exit 1; fi  # Change directory to 'scripts'; exit if not found
+      - cd scripts  # Change directory to 'scripts' (assuming we are already in the root directory)
       - ls -al  # List files and directories inside 'scripts' directory
       - chmod +x *.sh  # Ensure scripts are executable
       - ./start_server.sh  # Execute start_server.sh script
