@@ -4,21 +4,22 @@ phases:
   install:
     
     commands:
+      - mvn clean install -f pom.xml
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd path/to/scripts; fi  # Change directory to where 'scripts' folder is located
-      - mvn clean install -f pom.xml  # Execute Maven build from the root directory
+      - if [ -d "scripts" ]; then cd scripts; else cd scripts; fi  # Change directory to where 'scripts' folder is located
+         # Execute Maven build from the root directory
 
   pre_build:
     commands:
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd path/to/scripts; fi  # Change directory to where 'scripts' folder is located
+      - if [ -d "scripts" ]; then cd scripts; else cd scripts; fi  # Change directory to where 'scripts' folder is located
       - chmod +x *.sh  # Ensure scripts are executable
       - ./setup.sh  # Execute setup.sh script
 
   build:
     commands:
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd path/to/scripts; fi  # Change directory to where 'scripts' folder is located
+      - if [ -d "scripts" ]; then cd scripts; else cd scripts; fi  # Change directory to where 'scripts' folder is located
       - # Additional build commands as needed
 
   post_build:
