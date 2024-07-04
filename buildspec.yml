@@ -4,9 +4,18 @@ phases:
   install:
     runtime-versions:
       java: openjdk11
+    commands:
+      - project/scripts/install_dependencies.sh  # Execute install_dependencies.sh script
+  pre_build:
+    commands:
+      - project/scripts/setup.sh  # Execute setup.sh script
   build:
     commands:
-      - javac src/Main.java
+      - javac src/Main.java  # Example command to compile Java code
+  post_build:
+    commands:
+      - project/scripts/start_server.sh  # Execute start_server.sh script
+
 artifacts:
   files:
     - '**/*'
