@@ -2,33 +2,18 @@ version: 0.2
 
 phases:
   install:
-    
-    commands:
-      - mvn clean install -f pom.xml
-      - ls -al  # List all files and directories to verify structure
-
+    runtime-versions:
+      nodejs: 12
   pre_build:
     commands:
-      - pwd
-      - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; fi  # Change directory to 'scripts' if it exists
-      - ls -al  # List files and directories inside 'scripts' directory if changed
-
+      - echo "Installing Maven and Java"
+      - apt-get update
+      - apt-get install -y maven openjdk-11-jdk
   build:
     commands:
-      - ls -al  # List all files and directories to verify structure
-      - # Additional build commands as needed
-
-  post_build:
-    commands:
-      - pwd
-      - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; fi  # Change directory to 'scripts' if it exists
-      - ls -al  # List files and directories inside 'scripts' directory if changed
-      - chmod +x *.sh  # Ensure scripts are executable
-      - ./start_server.sh  # Execute start_server.sh script
-      - ./stop_server.sh   # Execute stop_server.sh script after deployment
-
+      - echo Build started on `date`
+      - mvn clean install -f pom.xml
+      - echo Build completed on `date`
 artifacts:
   files:
     - '**/*'
