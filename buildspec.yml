@@ -11,11 +11,8 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - ls -al scripts  # List contents of 'scripts' directory to verify it exists
-      - cd scripts  # Change directory to 'scripts'
-      - ls -al  # List files and directories inside 'scripts' directory
-      - chmod +x *.sh  # Ensure scripts are executable
-      - ./setup.sh  # Execute setup.sh script
+      - if [ -d "scripts" ]; then cd scripts; fi  # Change directory to 'scripts' if it exists
+      - ls -al  # List files and directories inside 'scripts' directory if changed
 
   build:
     commands:
@@ -26,8 +23,8 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - cd scripts  # Change directory to 'scripts' (assuming we are already in the root directory)
-      - ls -al  # List files and directories inside 'scripts' directory
+      - if [ -d "scripts" ]; then cd scripts; fi  # Change directory to 'scripts' if it exists
+      - ls -al  # List files and directories inside 'scripts' directory if changed
       - chmod +x *.sh  # Ensure scripts are executable
       - ./start_server.sh  # Execute start_server.sh script
       - ./stop_server.sh   # Execute stop_server.sh script after deployment
