@@ -25,7 +25,7 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd path/to/scripts; fi  # Change directory to where 'scripts' folder is located
+      - if [ -d "scripts" ]; then cd scripts; else cd ../path/to/scripts; fi  # Adjust path as necessary
       - ls -al  # List files and directories inside 'scripts' directory
       - chmod +x *.sh  # Ensure scripts are executable
       - ./start_server.sh  # Execute start_server.sh script
