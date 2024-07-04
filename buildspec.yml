@@ -2,29 +2,28 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      java: openjdk11
     commands:
-      - mvn clean install -f java-app/pom.xml  # Execute Maven build from the root directory of java-app
-      - cd scripts  # Change directory to the scripts folder if it exists
-      - if [ -d "../scripts" ]; then cd ../scripts; fi  # Fallback to parent directory if 'scripts' is not directly under 'java-app'
-      - chmod +x *.sh  # Ensure scripts are executable
-      - ./install_dependencies.sh  # Execute install_dependencies.sh script
+      - cd java-app  # Change directory to the root of your Java application
+      - mvn clean install  # Execute Maven build from the root directory of java-app
 
   pre_build:
     commands:
-      - cd scripts  # Change directory to the scripts folder if it exists
+      - cd java-app/scripts  # Change directory to the scripts folder if it exists
       - if [ -d "../scripts" ]; then cd ../scripts; fi  # Fallback to parent directory if 'scripts' is not directly under 'java-app'
       - chmod +x *.sh  # Ensure scripts are executable
       - ./setup.sh  # Execute setup.sh script
 
   build:
     commands:
-      - cd scripts  # Change directory to the scripts folder if it exists
+      - cd java-app/scripts  # Change directory to the scripts folder if it exists
       - if [ -d "../scripts" ]; then cd ../scripts; fi  # Fallback to parent directory if 'scripts' is not directly under 'java-app'
       - # Additional build commands as needed, e.g., compiling Java sources
 
   post_build:
     commands:
-      - cd scripts  # Change directory to the scripts folder if it exists
+      - cd java-app/scripts  # Change directory to the scripts folder if it exists
       - if [ -d "../scripts" ]; then cd ../scripts; fi  # Fallback to parent directory if 'scripts' is not directly under 'java-app'
       - chmod +x *.sh  # Ensure scripts are executable
       - ./start_server.sh  # Execute start_server.sh script
