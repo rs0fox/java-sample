@@ -3,6 +3,7 @@ version: 0.2
 phases:
   install:
     commands:
+      - mvn clean install -f pom.xml 
       - cd scripts  # Change directory to scripts folder
       - chmod +x *.sh
       - ./install_dependencies.sh  # Execute install_dependencies.sh script
