@@ -1,24 +1,8 @@
 #!/bin/bash
 
-# Make install_dependencies.sh executable
-chmod +x install_dependencies.sh
+# Create the deployment directory
+mkdir -p /home/ec2-user/my-java-app
 
-# Update buildspec.yml to execute install_dependencies.sh
-cat <<EOF > buildspec.yml
-version: 0.2
-
-phases:
-  install:
-    runtime-versions:
-      java: openjdk11
-    commands:
-      - ./install_dependencies.sh
-  build:
-    commands:
-      - javac src/Main.java
-artifacts:
-  files:
-    - '**/*'
-EOF
-
-echo "Setup completed."
+# Set permissions for the deployment directory
+chown -R ec2-user:ec2-user /home/ec2-user/my-java-app
+chmod -R 755 /home/ec2-user/my-java-app

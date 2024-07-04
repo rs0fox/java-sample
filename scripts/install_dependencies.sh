@@ -1,19 +1,7 @@
 #!/bin/bash
 
-# Example: Install Maven (if not already installed)
-sudo yum update -y
-sudo yum install -y maven
+# Install Java 8
+sudo amazon-linux-extras install java-openjdk8 -y
 
-# Example: Install dependencies using Maven
-mvn clean install
-
-# Example: Install dependencies using Gradle
-sudo yum install -y gradle
-gradle build
-
-# Additional commands as needed for your specific dependencies
-# Update package repository
-sudo yum update -y
-
-# Install OpenJDK 11
-#udo yum install -y java-11-openjdk-devel
+# Install other dependencies (e.g., MySQL connector)
+sudo yum install -y mysql-connector-java

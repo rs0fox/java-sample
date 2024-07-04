@@ -1,13 +1,13 @@
 #!/bin/bash
 
-# Find the PID of the Java process
-PID=$(ps aux | grep 'your-app.jar' | grep -v grep | awk '{print $2}')
+# Get the process ID of the Java application
+PID=$(ps -ef | grep my-java-app.jar | grep -v grep | awk '{print $2}')
 
-if [ -z "$PID" ]; then
-  echo "Java application is not running."
-else
-  # Gracefully terminate the Java process
+# Stop the Java application
+if [ -n "$PID" ]; then
+  echo "Stopping Java application..."
   kill $PID
-
   echo "Java application stopped."
+else
+  echo "Java application is not running."
 fi
