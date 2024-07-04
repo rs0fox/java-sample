@@ -16,4 +16,4 @@ gradle build
 sudo yum update -y
 
 # Install OpenJDK 11
-sudo yum install -y java-11-openjdk-devel
+#udo yum install -y java-11-openjdk-devel
