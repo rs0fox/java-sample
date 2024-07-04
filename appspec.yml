@@ -33,9 +33,7 @@ hooks:
       timeout: 300
       runas: root  # Execute as root for installation
 
-    - location: scripts/set_permissions.sh
-      timeout: 300
-      runas: root  # Execute as ec2-user after installation
+    
 
   ApplicationStart:
     - location: scripts/start_server.sh
