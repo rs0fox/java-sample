@@ -1,24 +1,10 @@
-version: 0.0
-os: linux
-
-files:
-  - source: /
-    destination: /home/ec2-user/my-java-app  # Adjust destination as per your setup
-
-permissions:
-  - object: scripts/*.sh
-    pattern: "**"
-    owner: ec2-user
-    group: ec2-user
-    mode: 0755  # Ensure scripts have executable permissions (rwxr-xr-x)
-
 phases:
   install:
     runtime-versions:
-      java: corretto11
+      java: openjdk-11
     commands:
       - echo "Installing Maven and Java"
-      - yum install -y maven java-11-amazon-corretto-devel
+      - yum install -y maven java-11-openjdk-devel
 
   build:
     commands:
