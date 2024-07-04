@@ -3,16 +3,20 @@ version: 0.2
 phases:
   install:
     commands:
-      - project/scripts/install_dependencies.sh  # Execute install_dependencies.sh script
+      - cd java-app/scripts  # Change directory to scripts folder
+      - ./install_dependencies.sh  # Execute install_dependencies.sh script
   pre_build:
     commands:
-      - project/scripts/setup.sh  # Execute setup.sh script
+      - cd java-app/scripts  # Change directory to scripts folder
+      - ./setup.sh  # Execute setup.sh script
   build:
     commands:
-      - javac src/Main.java  # Example command to compile Java code
+      - cd java-app/scripts  # Change directory to scripts folder
+      - # Additional build commands as needed, e.g., javac src/Main.java
   post_build:
     commands:
-      - project/scripts/start_server.sh  # Execute start_server.sh script
+      - cd java-app/scripts  # Change directory to scripts folder
+      - ./start_server.sh  # Execute start_server.sh script
 
 artifacts:
   files:
