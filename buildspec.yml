@@ -2,8 +2,7 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: openjdk11
+    
     commands:
       - cd scripts  # Change directory to the root where 'scripts' folder is located
       - mvn clean install -f pom.xml  # Execute Maven build from the root directory
