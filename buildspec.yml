@@ -2,8 +2,6 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: openjdk11
     commands:
       - project/scripts/install_dependencies.sh  # Execute install_dependencies.sh script
   pre_build:
