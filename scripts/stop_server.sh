@@ -1,8 +1,22 @@
 #!/bin/bash
-# Example script to install Java (OpenJDK 12) and Maven
+# Example script to stop a Java application
 
-# Install OpenJDK 12
-yum install -y java-12-openjdk-devel
+# Identify the Java process running your application
+PID=$(pgrep -f 'my-java-app-1.0-SNAPSHOT.jar')
 
-# Install Maven
-yum install -y maven
+if [ -z "$PID" ]; then
+    echo "No running Java process found for my-java-app-1.0-SNAPSHOT.jar"
+else
+    echo "Stopping Java process with PID $PID"
+    kill $PID
+    
+    # Wait for the process to stop
+    sleep 5
+    
+    # Verify if the process is still running
+    if ps -p $PID > /dev/null; then
+        echo "Java process with PID $PID could not be stopped"
+    else
+        echo "Java process with PID $PID stopped successfully"
+    fi
+fi
