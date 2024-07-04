@@ -35,12 +35,12 @@ hooks:
 
     - location: scripts/set_permissions.sh
       timeout: 300
-      runas: ec2-user  # Execute as ec2-user after installation
+      runas: root  # Execute as ec2-user after installation
 
   ApplicationStart:
     - location: scripts/start_server.sh
       timeout: 300
-      runas: ec2-user  # Execute as ec2-user
+      runas: root # Execute as ec2-user
 
     - command: chmod +x /home/ec2-user/my-java-app/scripts/start_server.sh
       runas: root  # Execute as root to change permissions
@@ -48,7 +48,7 @@ hooks:
   ApplicationStop:
     - location: scripts/stop_server.sh
       timeout: 300
-      runas: ec2-user  # Execute as ec2-user
+      runas: root  # Execute as ec2-user
 
     - command: chmod +x /home/ec2-user/my-java-app/scripts/stop_server.sh
       runas: root  # Execute as root to change permissions
