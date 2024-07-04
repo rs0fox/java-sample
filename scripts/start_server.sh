@@ -1,8 +1,9 @@
 #!/bin/bash
-# Example script to start a Java application
 
-# Change directory to where the JAR is located
-cd /opt/codedeploy-agent/deployment-root/249035e1-06f8-4a93-94fd-033e94ce4771/d-YBOLR2M17/deployment-archive/target
+# Set Java options
+JAVA_OPTS="-Xmx512m -Dserver.port=8080"
 
 # Start the Java application
-java -jar my-java-app-1.0-SNAPSHOT.jar > app.log &
+java $JAVA_OPTS -jar your-app.jar > app.log 2>&1 &
+
+echo "Java application started."

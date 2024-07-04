@@ -1,18 +1,13 @@
 #!/bin/bash
-# Example script to install Java (OpenJDK 12) and Maven
 
-# Check if Java is already installed
-if ! command -v java &>/dev/null; then
-    echo "Installing OpenJDK 12..."
-    yum install -y java-12-openjdk-devel
-else
-    echo "Java is already installed."
-fi
+# Find the PID of the Java process
+PID=$(ps aux | grep 'your-app.jar' | grep -v grep | awk '{print $2}')
 
-# Check if Maven is already installed
-if ! command -v mvn &>/dev/null; then
-    echo "Installing Maven..."
-    yum install -y maven
+if [ -z "$PID" ]; then
+  echo "Java application is not running."
 else
-    echo "Maven is already installed."
+  # Gracefully terminate the Java process
+  kill $PID
+
+  echo "Java application stopped."
 fi
