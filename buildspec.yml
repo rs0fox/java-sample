@@ -3,19 +3,19 @@ version: 0.2
 phases:
   install:
     commands:
-      - cd java-app/scripts  # Change directory to scripts folder
+      - cd scripts  # Change directory to scripts folder
       - ./install_dependencies.sh  # Execute install_dependencies.sh script
   pre_build:
     commands:
-      - cd java-app/scripts  # Change directory to scripts folder
+      - cd scripts  # Change directory to scripts folder
       - ./setup.sh  # Execute setup.sh script
   build:
     commands:
-      - cd java-app/scripts  # Change directory to scripts folder
+      - cd scripts  # Change directory to scripts folder
       - # Additional build commands as needed, e.g., javac src/Main.java
   post_build:
     commands:
-      - cd java-app/scripts  # Change directory to scripts folder
+      - cd scripts  # Change directory to scripts folder
       - ./start_server.sh  # Execute start_server.sh script
 
 artifacts:
