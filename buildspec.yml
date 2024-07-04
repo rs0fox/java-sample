@@ -2,8 +2,7 @@ version: 0.2
 
 phases:
   install:
-    runtime-versions:
-      java: openjdk11
+    
     commands:
       - cd java-app  # Change directory to the root of your Java application
       - mvn clean install  # Execute Maven build from the root directory of java-app
