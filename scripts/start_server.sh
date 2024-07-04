@@ -1,12 +1,8 @@
 #!/bin/bash
+# Example script to start a Java application
 
-# Change directory to where the JAR file is located
-cd /tmp/my-java-app
+# Change directory to where the JAR is located
+cd /home/ec2-user/my-java-app
 
 # Start the Java application (example command)
-java -jar my-java-app.jar > /dev/null 2>&1 &
-
-# Optionally, add a sleep to allow the server to start up
-sleep 10
-
-exit 0
+java -jar my-app.jar > app.log &
