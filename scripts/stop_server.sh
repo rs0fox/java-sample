@@ -1,7 +1,10 @@
 #!/bin/bash
 
+# Change directory to where the JAR file is located
+cd /tmp/my-java-app
+
 # Find Java process ID
-PID=$(pgrep -f "java -jar /tmp/my-java-app/my-java-app.jar")
+PID=$(pgrep -f "java -jar my-java-app.jar")
 
 if [ -z "$PID" ]; then
   echo "Java process not found."
