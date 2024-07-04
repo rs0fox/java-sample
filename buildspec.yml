@@ -2,7 +2,8 @@ version: 0.2
 
 phases:
   install:
-    
+    runtime-versions:
+      java: openjdk11
     commands:
       - mvn clean install -f pom.xml
       - ls -al  # List all files and directories to verify structure
@@ -11,7 +12,7 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd path/to/scripts; fi  # Change directory to where 'scripts' folder is located
+      - cd scripts || exit 1  # Change directory to 'scripts'; exit if not found
       - ls -al  # List files and directories inside 'scripts' directory
       - chmod +x *.sh  # Ensure scripts are executable
       - ./setup.sh  # Execute setup.sh script
@@ -25,7 +26,7 @@ phases:
     commands:
       - pwd
       - ls -al  # List all files and directories to verify structure
-      - if [ -d "scripts" ]; then cd scripts; else cd ../path/to/scripts; fi  # Adjust path as necessary
+      - cd scripts || exit 1  # Change directory to 'scripts'; exit if not found
       - ls -al  # List files and directories inside 'scripts' directory
       - chmod +x *.sh  # Ensure scripts are executable
       - ./start_server.sh  # Execute start_server.sh script
