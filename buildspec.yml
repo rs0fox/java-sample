@@ -4,10 +4,12 @@ phases:
   install:
     commands:
       - cd scripts  # Change directory to scripts folder
+      - chmod +x *.sh
       - ./install_dependencies.sh  # Execute install_dependencies.sh script
   pre_build:
     commands:
       - cd scripts  # Change directory to scripts folder
+      - chmod +x *.sh
       - ./setup.sh  # Execute setup.sh script
   build:
     commands:
@@ -16,7 +18,14 @@ phases:
   post_build:
     commands:
       - cd scripts  # Change directory to scripts folder
+      - chmod +x *.sh
       - ./start_server.sh  # Execute start_server.sh script
+
+  final:
+    commands:
+      - cd scripts  # Change directory to scripts folder
+      - chmod +x *.sh
+      - ./stop_server.sh  # Execute stop_server.sh script
 
 artifacts:
   files:
