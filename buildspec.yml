@@ -10,7 +10,7 @@ phases:
   pre_build:
     commands:
       - cd scripts  # Change directory to the scripts folder if it exists
-      - if [ -d "../scripts" ]; then cd ../scripts; fi  # Fallback to parent directory if 'scripts' is not directly under 'java-app'
+      
       - chmod +x *.sh  # Ensure scripts are executable
       - ./setup.sh  # Execute setup.sh script
 
